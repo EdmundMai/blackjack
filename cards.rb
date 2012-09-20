@@ -13,10 +13,11 @@ module Blackjack
   	end
   	
   	def value
-  	  if @number == ("jack" || "queen" || "king")
-  	  	@value = 10
+  	  case @number
+      when 'jack', 'queen', 'king'
+        10
   	  else
-  	  	@value = @number
+  	  	@number.to_i
   	  end
   	end
 
