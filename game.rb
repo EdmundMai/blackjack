@@ -36,16 +36,27 @@ while response == "y"
   	    puts hand.sum
       end
   	end
-  	puts "You busted. Your final sum was #{hand.sum}"
-  	puts "Would you like to play again? Y or N"
-  	response = gets.chomp.downcase
-  else
-  	puts "Your final sum was #{hand.sum}"
-  	puts "Would you like to play again? Y or N"
-  	response = gets.chomp.downcase
   end
-  # if answer == "y"
-  # 	hand.hand << deck.deal
-  # 	puts hand
-  # end
+  puts "You busted" if hand.sum > 21
+  puts "Blackjack" if hand.sum == 21
+  puts "Your final sum was #{hand.sum}"
+  dealer.hand << deck.deal while dealer.sum <=16
+  puts "Dealer's hand:"
+  puts dealer.hand
+  puts dealer.sum
+  if dealer.sum <= 21 && dealer.sum >= hand.sum
+  	puts "You lose."
+  elsif hand.sum > 21 && dealer.sum > 21
+  	puts "No one wins."
+  elsif hand.sum <= 21 && dealer.sum > 21
+  	puts "Dealer busts. You win."
+  else
+  	puts "Dealer wins"
+  end
+  if deck.remaining_cards < 10
+  	deck.shuffle
+  	puts "Deck has been reset"
+  end
+  puts "Would you like to play again? Y or N"
+  response = gets.chomp.downcase
 end

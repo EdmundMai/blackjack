@@ -8,8 +8,6 @@ module Blackjack
 
   	def initialize(first_card, second_card)
   	  @hand = Array.new << first_card << second_card
-      # @sum = 0
-      # @sum = @hand.each { |card| @sum += card.value }
   	end
 
   	def to_s
